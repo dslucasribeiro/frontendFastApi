@@ -1,0 +1,7 @@
+<!-- src/app/lista-produtos/lista-produtos.component.html -->
+<h2>Lista de Produtos</h2>
+<mat-list>
+  <mat-list-item *ngFor="let produto of produtos">
+    {{ produto.titulo }} - {{ produto.descricao }} - R$ {{ produto.preco }}
+  </mat-list-item>
+</mat-list>

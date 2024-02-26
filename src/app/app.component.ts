@@ -1,13 +1,11 @@
+// src/app/app.component.ts
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template: `
+    <h1>Meu Projeto Frontend</h1>
+    <app-lista-produtos></app-lista-produtos>
+  `,
 })
-export class AppComponent {
-  title = 'frontendFastApi';
-}
+export class AppComponent {}
