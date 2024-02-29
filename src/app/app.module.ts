@@ -7,6 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { RouterModule, Routes } from '@angular/router';
+import { routes } from './app.routes';
+
 
 @NgModule({
   declarations: [
@@ -18,6 +21,7 @@ import { MatListModule } from '@angular/material/list';
     HttpClientModule,
     MatButtonModule,
     MatListModule,
+    RouterModule.forRoot(routes),
   ],
   bootstrap: [AppComponent],
   providers: [
