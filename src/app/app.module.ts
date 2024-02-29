@@ -9,12 +9,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule, Routes } from '@angular/router';
 import { routes } from './app.routes';
+import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
+import { ContainerComponent } from './componentes/container/container.component';
+import { SeparadorComponent } from './componentes/separador/separador.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaProdutosComponent,
+    CabecalhoComponent,
+    ContainerComponent,
+    SeparadorComponent
   ],
   imports: [
     BrowserModule,

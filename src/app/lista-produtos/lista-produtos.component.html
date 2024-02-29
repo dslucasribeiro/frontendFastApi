@@ -1,7 +1,22 @@
 <!-- src/app/lista-produtos/lista-produtos.component.html -->
-<h2>Lista de Produtos</h2>
+<!-- <h2>Lista de Produtos</h2>
 <mat-list>
   <mat-list-item *ngFor="let produto of produtos">
     {{ produto.titulo }} - {{ produto.descricao }} - R$ {{ produto.preco }}
   </mat-list-item>
-</mat-list>
+</mat-list> -->
+
+<app-container>
+  <section class="adicionar-contato">
+    <button routerLink="/formulario">
+      <span>Adicionar contato</span>
+    </button>
+  </section>
+    
+    @for (produto of produtos; track produto) {
+      Nome: {{ produto.titulo }} <br><br>
+      Desc: {{ produto.descricao }} <br><br>
+      R$: {{ produto.preco }}<br>
+      <app-separador></app-separador>
+    } 
+</app-container>
