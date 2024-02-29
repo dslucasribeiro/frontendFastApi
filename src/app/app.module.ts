@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
+import { ListaProdutosComponent } from './paginas/lista-produtos/lista-produtos.component';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,6 +12,8 @@ import { routes } from './app.routes';
 import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
 import { ContainerComponent } from './componentes/container/container.component';
 import { SeparadorComponent } from './componentes/separador/separador.component';
+import { FormularioProdutoComponent } from './paginas/formulario-produto/formulario-produto.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { SeparadorComponent } from './componentes/separador/separador.component'
     ListaProdutosComponent,
     CabecalhoComponent,
     ContainerComponent,
-    SeparadorComponent
+    SeparadorComponent,
+    FormularioProdutoComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -28,6 +32,7 @@ import { SeparadorComponent } from './componentes/separador/separador.component'
     MatButtonModule,
     MatListModule,
     RouterModule.forRoot(routes),
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent],
   providers: [

@@ -1,0 +1,46 @@
+<app-container>
+    <header>
+        <Section class="cabecalho-link">
+            <div>
+                <button>
+                    <img src="assets/arrow-left.png" alt="" class="seta">
+                    <a routerLink="/produtos">Voltar</a>
+                </button>
+            </div>
+        </Section>
+        <section class="cabecalho-contato">
+            <h1>Adicionar contato</h1>
+        </section>
+    </header>
+    <form [formGroup]="produtoForm" (ngSubmit)="salvarProduto()">
+        <label for="id">ID</label>
+        <input type="text" id="id" placeholder="Informe o ID" formControlName="id">
+        @if(produtoForm.get('id')?.errors && produtoForm.get('id')?.touched){
+           <div class="mensagem-erro">Campo obrigatório</div>
+        }
+        <label for="titulo">TITULO</label>
+        <input type="text" id="titulo" placeholder="Informe o nome do produto" formControlName="titulo">
+        @if(produtoForm.get('titulo')?.errors && produtoForm.get('titulo')?.touched){
+            <div class="mensagem-erro">Campo obrigatório</div>
+         }
+        <label for="descricao">DESCRICAO</label>
+        <input type="text" id="descricao" placeholder="Informe a descricao do produto" formControlName="descricao">
+        @if(produtoForm.get('descricao')?.errors && produtoForm.get('descricao')?.touched){
+            <div class="mensagem-erro">Campo obrigatório</div>
+         }
+        <label for="preco">PRECO</label>
+        <input type="number" id="preco" placeholder="Informe o preco do produto" formControlName="preco">
+        @if(produtoForm.get('preco')?.errors && produtoForm.get('preco')?.touched){
+            <div class="mensagem-erro">Campo obrigatório</div>
+         }
+
+        <section class="botoes">
+            <button class="botao-cancelar" type="button">Cancelar</button>
+            <button class="botao-salvar" 
+            [disabled]="produtoForm.invalid"
+            [ngClass]="produtoForm.valid ? 'botao-salvar' : 'botao-desabilitado'"
+            type="submit">Salvar Produto</button>
+        </section>
+    </form>
+    
+</app-container>
