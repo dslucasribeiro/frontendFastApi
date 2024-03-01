@@ -13,7 +13,7 @@ import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component'
 import { ContainerComponent } from './componentes/container/container.component';
 import { SeparadorComponent } from './componentes/separador/separador.component';
 import { FormularioProdutoComponent } from './paginas/formulario-produto/formulario-produto.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     MatButtonModule,
     MatListModule,
+    FormsModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule
   ],
