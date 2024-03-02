@@ -8,22 +8,40 @@
 
 <app-container>
 
-  <input type="search"
-  placeholder="Digite para buscar"
-  [(ngModel)]="filtroPorTexto"
-  >
-
-  <section class="adicionar-contato">
+  <section class="adicionar-produto">
     <button routerLink="/formulario">
       <span>Adicionar produto</span>
     </button>
   </section>
+
+  <div class="container">
+    <input type="search"
+    placeholder="Digite para buscar"
+    [(ngModel)]="filtroPorTexto"
+    >
+  </div>
   @for (letra of alfabeto; track letra) {
     @for (produto of filtrarProdutosPorLetraInicial(letra); track produto) {
-      Nome: {{ produto.titulo }} <br><br>
-      Desc: {{ produto.descricao }} <br><br>
-      R$: {{ produto.preco }}<br>
+      <section class="produto">
+        <ul>
+            <li>
+                <strong>{{ produto.titulo }}</strong>
+            </li>
+            <li>{{ produto.descricao }}</li>
+            <li>R$ {{ produto.preco }}</li>
+            <li>
+                <button>
+                    <img src="/assets/pencil-square.png" alt="">
+                </button>
+                <button>
+                    <img src="/assets/trash.png" alt="" (click)="excluirProduto(produto.id)">
+                </button>
+            </li>
+        </ul>
+      </section>
       <app-separador></app-separador>
     }
   } 
+
+  
 </app-container>

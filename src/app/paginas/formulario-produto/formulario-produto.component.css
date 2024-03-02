@@ -28,7 +28,7 @@ header .cabecalho-link {
     color: #0D6EFD;
   }
   
-  header .cabecalho-contato {
+  header .cabecalho-produto {
     display: flex;
     flex-direction: column;
     align-items: center;
