@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ProdutoService } from '../../services/produto.service';
 
 import { Produto } from '../../componentes/produto/produto';
+import { MatDialog } from '@angular/material/dialog';
+import { EditarProdutoComponent } from '../editar-produto/editar-produto.component';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -18,7 +20,7 @@ export class ListaProdutosComponent implements OnInit {
   @Input() descricao: string = ''
   @Input() preco: string = ''
 
-  constructor(private produtoService: ProdutoService) {}
+  constructor(private produtoService: ProdutoService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.listarProdutos();
@@ -43,6 +45,27 @@ export class ListaProdutosComponent implements OnInit {
       },
       (error) => {
         console.error('Erro ao excluir produto:', error);
+      }
+    );
+  }
+
+  editarProduto(produto: Produto): void {
+    this.produtoService.obterProdutoPorId(produto.id).subscribe(
+      (produtoParaEditar) => {
+        const dialogRef = this.dialog.open(EditarProdutoComponent, {
+          data: { produto: produtoParaEditar },
+        });
+
+        dialogRef.afterClosed().subscribe((result) => {
+          // Lógica a ser executada após o modal ser fechado
+          if (result === 'success') {
+            this.listarProdutos();
+            console.log('Produto editado com sucesso!');
+          }
+        });
+      },
+      (error) => {
+        console.error('Erro ao obter produto para edição:', error);
       }
     );
   }

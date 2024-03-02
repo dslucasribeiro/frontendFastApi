@@ -14,6 +14,7 @@ import { ContainerComponent } from './componentes/container/container.component'
 import { SeparadorComponent } from './componentes/separador/separador.component';
 import { FormularioProdutoComponent } from './paginas/formulario-produto/formulario-produto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   bootstrap: [AppComponent],
   providers: [

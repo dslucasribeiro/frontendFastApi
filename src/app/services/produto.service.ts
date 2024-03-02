@@ -30,4 +30,12 @@ export class ProdutoService {
   excluirProduto(id: number): Observable<Produto> {
     return this.http.delete<Produto>(`${this.apiUrl}/produtos/${id}`);
   }
+
+  obterProdutoPorId(id: number): Observable<Produto> {
+    return this.http.get<Produto>(`${this.apiUrl}/produtos/${id}`);
+  }
+  
+  editarProduto(produto: Produto): Observable<Produto> {
+    return this.http.put<Produto>(`${this.apiUrl}/produtos/${produto.id}`, produto);
+  }
 }

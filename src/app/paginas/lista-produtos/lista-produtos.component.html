@@ -31,7 +31,7 @@
             <li>R$ {{ produto.preco }}</li>
             <li>
                 <button>
-                    <img src="/assets/pencil-square.png" alt="">
+                    <img src="/assets/pencil-square.png" alt="" (click)="editarProduto(produto)">
                 </button>
                 <button>
                     <img src="/assets/trash.png" alt="" (click)="excluirProduto(produto.id)">
