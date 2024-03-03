@@ -35,7 +35,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    
   ],
   bootstrap: [AppComponent],
   providers: [
