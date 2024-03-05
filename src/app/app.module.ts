@@ -15,6 +15,7 @@ import { SeparadorComponent } from './componentes/separador/separador.component'
 import { FormularioProdutoComponent } from './paginas/formulario-produto/formulario-produto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { EditarProdutoComponent } from './paginas/editar-produto/editar-produto.component';
 
 
 @NgModule({
@@ -25,6 +26,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ContainerComponent,
     SeparadorComponent,
     FormularioProdutoComponent,
+    EditarProdutoComponent
+    
+  
     
   ],
   imports: [

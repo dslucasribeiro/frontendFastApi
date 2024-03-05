@@ -14,6 +14,7 @@ import { EditarProdutoComponent } from '../editar-produto/editar-produto.compone
 export class ListaProdutosComponent implements OnInit {
   alfabeto: string = 'abcdefghijklmnopqrstuvwxyz'
   produtos: Produto[] = [];
+  produtoEmEdicao: Produto | null = null;
   filtroPorTexto: string = '';
   @Input() id: number = 0;
   @Input() nome: string = ''
@@ -26,6 +27,7 @@ export class ListaProdutosComponent implements OnInit {
     this.listarProdutos();
   }
 
+
   private listarProdutos(): void {
     this.produtoService.listarProdutos().subscribe(
       (produtos) => {
@@ -37,6 +39,28 @@ export class ListaProdutosComponent implements OnInit {
     );
   }
 
+  editarProduto(produto: Produto): void {
+    const dialogRef = this.dialog.open(EditarProdutoComponent, {
+        data: { produto },
+        width: '800px',
+    });
+
+    dialogRef.componentInstance.editarProduto.subscribe((dadosEditados: any) => {
+        this.produtoService.editarProduto(dadosEditados).subscribe(
+            (resposta) => {
+                this.listarProdutos();
+            },
+            (error) => {
+                console.error('Erro ao editar produto:', error);
+            }
+        );
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+        console.log('O modal foi fechado, com resultado:', result);
+    });
+}
+
   excluirProduto(id: number): void {
     this.produtoService.excluirProduto(id).subscribe(
       () => {
@@ -45,27 +69,6 @@ export class ListaProdutosComponent implements OnInit {
       },
       (error) => {
         console.error('Erro ao excluir produto:', error);
-      }
-    );
-  }
-
-  editarProduto(produto: Produto): void {
-    this.produtoService.obterProdutoPorId(produto.id).subscribe(
-      (produtoParaEditar) => {
-        const dialogRef = this.dialog.open(EditarProdutoComponent, {
-          data: { produto: produtoParaEditar },
-        });
-
-        dialogRef.afterClosed().subscribe((result) => {
-          // Lógica a ser executada após o modal ser fechado
-          if (result === 'success') {
-            this.listarProdutos();
-            console.log('Produto editado com sucesso!');
-          }
-        });
-      },
-      (error) => {
-        console.error('Erro ao obter produto para edição:', error);
       }
     );
   }
