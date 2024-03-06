@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-editar-produto',
@@ -14,7 +15,8 @@ export class EditarProdutoComponent {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditarProdutoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private snackBar: MatSnackBar
   ) {
     this.produtoForm = this.fb.group({
       titulo: [data.produto.titulo, Validators.required],
@@ -23,8 +25,15 @@ export class EditarProdutoComponent {
     });
   }
 
+  exibirSnackbar(mensagem: string): void {
+    this.snackBar.open(mensagem, 'Fechar', {
+      duration: 3000,  // Tempo em milissegundos que o snackbar ficará visível
+    });
+  }
+
   salvarEdicao(): void {
     this.editarProduto.emit({ id: this.data.produto.id, ...this.produtoForm.value });
+    this.exibirSnackbar('Edição salva com sucesso!');
     this.dialogRef.close('edicao-salva');
 }
 

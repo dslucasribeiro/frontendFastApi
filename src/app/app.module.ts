@@ -16,6 +16,7 @@ import { FormularioProdutoComponent } from './paginas/formulario-produto/formula
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditarProdutoComponent } from './paginas/editar-produto/editar-produto.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { EditarProdutoComponent } from './paginas/editar-produto/editar-produto.
     ContainerComponent,
     SeparadorComponent,
     FormularioProdutoComponent,
-    EditarProdutoComponent
+    EditarProdutoComponent,
+    
     
   
     
@@ -40,6 +42,7 @@ import { EditarProdutoComponent } from './paginas/editar-produto/editar-produto.
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     MatDialogModule,
+    MatSnackBarModule
     
   ],
   bootstrap: [AppComponent],
