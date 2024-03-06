@@ -94,4 +94,24 @@ export class ListaProdutosComponent implements OnInit {
       return this.removerAcentos(produto.titulo).toLowerCase().startsWith(this.removerAcentos(letra).toLowerCase());
     })
   }
+
+  desabilitarProduto(produto: Produto): void {
+    // Lógica para desabilitar o produto (por exemplo, definindo um campo "desabilitado" para true no produto)
+    // Lógica para definir o preço como 0
+    produto.preco = 1515;
+  
+    // Chame o serviço para atualizar o produto no backend
+    this.produtoService.editarProduto(produto).subscribe(
+      (resposta) => {
+        // Verifique a resposta se necessário
+        console.log('Produto desabilitado com sucesso:', resposta);
+  
+        // Atualize a lista após a ação de desabilitar
+        this.listarProdutos();
+      },
+      (error) => {
+        console.error('Erro ao desabilitar produto:', error);
+      }
+    );
+  }
 }
